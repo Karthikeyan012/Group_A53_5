@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Search</title>
+</head>
+<body>
+  <header>
+    <h1>Job Search</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Jobs</a></li>
+        <li><a href="#">Companies</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Find Your Dream Job</h2>
+    <form>
+      <label for="keywords">Keywords</label>
+      <input type="text" id="keywords" name="keywords">
+      <br>
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location">
+      <br>
+      <button type="submit">Search</button>
+    </form>
+    <h3>Featured Jobs</h3>
+    <ul>
+      <li>
+        <h4>Software Engineer</h4>
+        <p>Acme Inc.</p>
+        <p>San Francisco, CA</p>
+        <a href="#">Apply Now</a>
+      </li>
+      <li>
+        <h4>Marketing Manager</h4>
+        <p>Globex Corp.</p>
+        <p>New York, NY</p>
+        <a href="#">Apply Now</a>
+      </li>
+      <li>
+        <h4>Customer Service Representative</h4>
+        <p>Widgets Co.</p>
+        <p>Chicago, IL</p>
+        <a href="#">Apply Now</a>
+      </li>
+    </ul>
+  </main>
+  <footer>
+    <p>&copy; 2023 Job Search</p>
+  </footer>
+</body>
+</html>
