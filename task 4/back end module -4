@@ -1,0 +1,95 @@
+import java.sql.*;
+
+import java.util.ArrayList;
+
+import java.util.List;
+
+public class JobSearchBackend {
+
+private Connection connection;
+
+public JobSearchBackend() {
+
+// Establish database connection
+
+try {
+
+Class.forName("com.mysql.jdbc.Driver");
+
+connection =
+DriverManager.getConnection("jdbc:mysql://localhost:3306/job_search", "username",
+"password");
+
+} catch (ClassNotFoundException | SQLException e) {
+
+e.printStackTrace();
+
+}
+
+}
+
+public List<JobListing> search(String keyword) {
+
+List<JobListing> results = new ArrayList<>();
+
+try {
+
+PreparedStatement statement = connection.prepareStatement("SELECT * FROM job_listings WHERE title
+LIKE ? OR description LIKE ?");
+
+statement.setString(1, "%" + keyword + "%");
+
+statement.setString(2, "%" + keyword + "%");
+
+ResultSet resultSet = statement.executeQuery();
+
+while (resultSet.next()) {
+
+String title = resultSet.getString("title");
+
+String description = resultSet.getString("description");
+
+String location = resultSet.getString("location");
+
+double salary = resultSet.getDouble("salary");
+
+results.add(new JobListing(title, description, location, salary));
+
+}
+
+} catch (SQLException e) {
+
+e.printStackTrace();
+
+}
+
+return results;
+
+}
+
+public void save(JobListing jobListing) {
+
+try {
+
+PreparedStatement statement = connection.prepareStatement("INSERT
+INTO job_listings (title, description, location, salary) VALUES (?, ?, ?, ?)");
+
+statement.setString(1, jobListing.getTitle());
+
+statement.setString(2, jobListing.getDescription());
+
+statement.setString(3, jobListing.getLocation());
+
+statement.setDouble(4, jobListing.getSalary());
+
+statement.executeUpdate();
+
+} catch (SQLException e) {
+
+e.printStackTrace();
+
+}
+
+}
+
+}
